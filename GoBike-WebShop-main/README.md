@@ -17,3 +17,9 @@ Run script </br>
 ## To login
 use test@test for email </br>
 use test for password 
+
+<-- Használj lekérdezéseket az adatok megtekintésére:
+
+SELECT * FROM users;
+SELECT * FROM bikes;
+SELECT * FROM rentals; -->
