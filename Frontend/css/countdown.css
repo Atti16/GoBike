@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 #happyHour2 {
-    background-image: url('/assets/images/banner.png');
+    background-image: url('assets/images/banner.png');
     font-family:"Bangers" !important;
     background-size: 100% 100%;
     color: #0ed2f7;
