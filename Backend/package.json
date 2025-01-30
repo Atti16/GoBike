@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "GoBike Webshop",
+  "description": "GoBicikli Webshop",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
