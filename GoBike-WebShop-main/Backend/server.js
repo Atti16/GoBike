@@ -1,9 +1,9 @@
-var express = require('express');
-const cors = require('cors'); 
-var fs = require('fs');
-const mysql = require('mysql2'); // Importáljuk a mysql2 csomagot
+const express = require('express');
+const cors = require('cors');
+const fs = require('fs');
+const mysql = require('mysql2');
 
-var app = express();
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,37 +20,81 @@ const connection = mysql.createConnection({
     port: '3306'
 });
 
+// Kosár adatainak tárolása (ideiglenes memóriában)
+let cart = [];
+
 // TASK 4.
-//Product adding: after submitting a new product using the form, send the data to the server (use the POST method). Add the new product to the list of products.
-app.post('/addItem', addNewItem); 
-//Product loading: the basic product offer should be downloaded from the server (use the GET method). Show products in a "dynamic table" upon successful load.
+app.post('/addItem', addNewItem);
 app.get('/getItems', getItems);
-//Login: Simulate user login. When you click on the login button, send the information to the server (via the POST method).
-app.post('/login', loginUser );
+app.post('/login', loginUser);
+
+// Kosár kezelése
+app.get('/cart', (req, res) => {
+    res.json(cart);
+});
+
+app.post('/cart/add', (req, res) => {
+    const product = req.body;
+
+    if (!product || !product.id || !product.name || !product.price) {
+        return res.status(400).json({ message: 'Érvénytelen termék adatok' });
+    }
+
+    const existingProduct = cart.find(item => item.id === product.id);
+
+    if (existingProduct) {
+        existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+    } else {
+        product.quantity = 1;
+        cart.push(product);
+    }
+
+    res.json({ message: 'Termék hozzáadva a kosárhoz', cart });
+});
+
+app.delete('/cart/remove/:id', (req, res) => {
+    const productId = req.params.id;
+    cart = cart.filter(item => item.id !== productId);
+    res.json({ message: 'Termék eltávolítva a kosárból', cart });
+});
+
+app.delete('/cart/clear', (req, res) => {
+    cart = [];
+    res.json({ message: 'Kosár ürítve', cart });
+});
+
+// Fizetési folyamat kezelése
+app.post('/checkout', (req, res) => {
+    const { cardNumber, expiryDate, cvv } = req.body;
+
+    if (!cardNumber || !expiryDate || !cvv) {
+        return res.status(400).json({ message: 'Hiányzó fizetési adatok' });
+    }
+
+    console.log('Fizetési adatok:', { cardNumber, expiryDate, cvv });
+    cart = [];
+    res.json({ message: 'Fizetés sikeres', cart });
+});
 
 function getItems(req, res) {
-    // Sync will wait until all data is loaded
     var data = fs.readFileSync('Frontend/bikesInfo.json');
     res.send(data);
 }
 
-function loginUser (req, res) {
+function loginUser(req, res) {
     const { userEmail, userPassword } = req.body;
 
-    // SQL lekérdezés a felhasználó keresésére
     connection.query('SELECT * FROM users WHERE email = ? AND pass = ?', [userEmail, userPassword], (error, results) => {
         if (error) {
             return res.status(500).send({ message: 'Database error' });
         }
         if (results.length > 0) {
-            // Felhasználó megtalálva
             res.status(200).send({
                 message: true,
                 userId: results[0].id,
                 userEmail: results[0].email
             });
         } else {
-            // Felhasználó nem található
             res.status(404).send({ message: false });
         }
     });
@@ -80,6 +124,5 @@ function addNewItem(req, res) {
     res.send(reply);
 }
 
- console.log('Server is listening on port: 3000');
-module.exports = app;
-app.listen(3000); 
+console.log('Server is listening on port: 3000');
+app.listen(3000);
