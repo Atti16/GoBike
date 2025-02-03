@@ -77,7 +77,8 @@
                 <p>Quantity: 
                     <span><input type="number" id="qty" name="qty" min="1" max="5" value="1"></span></p>
                 <p>Rating: 4 <img style="height: 18px;" src="assets/icons/star.png"><span class="star"> <span id="dynamicItemRate"></span></span></p>       
-                <p>Price: <span style="color: red;">700$<span id="dynamicItemPrice"> <button>Buy</button></span></span></p>
+                <p>Price: <span style="color: red;">700$<span id="dynamicItemPrice"></span></span></p>
+                <button onclick="addToCart()">Kosárba</button>
                 <div id="dynamicItemAction"></div>
             </div>
         </div>
@@ -120,6 +121,22 @@
     </div>
     </br>
     </hr>
+    function addToCart() {
+        const item = {
+            name: document.getElementById('dynamicItemName').innerText,
+            price: 700, // Példa ár, ezt dinamikusan is beállíthatod
+            size: document.getElementById('itemSize').value,
+            color: document.getElementById('itemColor').value,
+            quantity: document.getElementById('qty').value
+        };
+    
+        // Kosár tartalmának lekérése a localStorage-ból
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(item); // Új termék hozzáadása a kosárhoz
+        localStorage.setItem('cart', JSON.stringify(cart)); // Kosár frissítése
+    
+        alert('Termék hozzáadva a kosárhoz!');
+    }
     <!--================ Start Newsletter Area =================-->
     <hr>
     <div class="justify-content-md-center pt-1">
