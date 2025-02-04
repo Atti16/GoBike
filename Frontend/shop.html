@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" /> <!-- for css @media -->
-    <title>Go-Bicikli Shop - Shop</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" /> <!-- a css @media számára -->
+    <title>Go-Bicikli Bolt - Vásárlás</title>
     <link rel="icon" type="image/x-icon" href="assets/images/gb-logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/countdown.css">
@@ -16,8 +16,8 @@
     <script src="src/readSingleItem.js"></script>
     <script src="src/isUserLoggedIn.js"></script>
 </head>
-<body onload="sartHappyHour();changeLoginText()">
-    <!--================ Start Header Menu Area =================-->
+<body onload="startHappyHour();changeLoginText()">
+    <!--================ Kezdőlap Menü Rész =================-->
     <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top topnav">
             <a class="navbar-brand" href="index.html">Go-Bicikli</a>
@@ -27,16 +27,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link color-white" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link color-white" href="index.html">Főoldal <span class="sr-only">(aktuális)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.html">Categories</a>
+                        <a class="nav-link" href="category.html">Kategóriák</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="shop.html">Shop</a></li>
+                        <a class="nav-link" href="shop.html">Bolt</a></li>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a></li>
+                        <a class="nav-link" href="contact.html">Kapcsolat</a></li>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -47,21 +47,22 @@
             </div>
         </nav>
     </header>
-    <!--================ End Header Menu Area =================-->
-    <!--================ Happy Hour Area =================-->
+    <!--================ Vége a Kezdőlap Menü Résznek =================-->
+
+    <!--================ Happy Hour Rész =================-->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-10 pt-5 text-center " style="height: 170px;" id="happyHour2">
-                <h5>Happy hour ends in:</h5> 
+                <h5>A Happy Hour vége:</h5> 
                 <p class="display-4" id="happyHour"></p>
             </div>
         </div>
     </div>
-    <!--================ Happy Hour Area =================-->
+    <!--================ Happy Hour Vége =================-->
 
-    <!--================ Start Shop Galery Area =================-->
+    <!--================ Kezdő Shop Galéria Rész =================-->
     <div class="container-fluid">
-        <h2 class="pt-4 pl-3">Our bike galery</h2>
+        <h2 class="pt-4 pl-3">Kerékpár galéria</h2>
         <div class="row justify-content-md-center w-90 mx-auto">
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-4">
                 <div class="card mx-auto text-center">
@@ -70,7 +71,7 @@
                         <h5>Marin Bolinas Ridge 1</h5>
                         <h4 style="color: #4CBB17;">$599</h4>
                         <h5><img style="height: 18px;" src="assets/icons/star.png"><span class="star"> 4</span></h5>
-                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(1)">Read more</a>
+                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(1)">Tovább</a>
                     </div>
                 </div>
             </div>
@@ -81,7 +82,7 @@
                         <h5>Marin Bolinas Ridge 2</h5>
                         <h4 style="color: #4CBB17;">$699</h4>
                         <h5><img style="height: 18px;" src="assets/icons/star.png"><span class="star"> 4.5</span></h5>
-                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(2)">Read more</a>
+                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(2)">Tovább</a>
                     </div>
                 </div>
             </div>
@@ -92,7 +93,7 @@
                         <h5>Marin Gestalt</h5>
                         <h4 style="color: #4CBB17;">$1099</h4>
                         <h5><img style="height: 18px;" src="assets/icons/star.png"><span class="star"> 5</span></h5>
-                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(3)">Read more</a>
+                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(3)">Tovább</a>
                     </div>
                 </div>
             </div>
@@ -103,7 +104,7 @@
                         <h5>Polygon Strattos S5 - Shimano 105</h5>
                         <h4 style="color: #4CBB17;">$1299</h4>
                         <h5><img style="height: 18px;" src="assets/icons/star.png"><span class="star"> 5</span></h5>
-                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(4)">Read more</a>
+                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(4)">Tovább</a>
                     </div>
                 </div>
             </div>
@@ -114,7 +115,7 @@
                         <h5>Marin Kentfield CS2 ST</h5>
                         <h4 style="color: #4CBB17;">$769</h4>
                         <h5><img style="height: 18px;" src="assets/icons/star.png"><span class="star"> 4.5</span></h5>
-                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(5)">Read more</a>
+                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(5)">Tovább</a>
                     </div>
                 </div>
             </div>
@@ -125,7 +126,7 @@
                         <h5>Polygon Sierra Deluxe Sport</h5>
                         <h4 style="color: #4CBB17;">$599</h4>
                         <h5><img style="height: 18px;" src="assets/icons/star.png"><span class="star"> 4</span></h5>
-                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(6)">Read more</a>
+                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(6)">Tovább</a>
                     </div>
                 </div>
             </div>
@@ -136,7 +137,7 @@
                         <h5>Polygon Mt Bromo N7</h5>
                         <h4 style="color: #4CBB17;">$4399</h4>
                         <h5><img style="height: 18px;" src="assets/icons/star.png"><span class="star"> 5</span></h5>
-                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(7)">Read more</a>
+                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(7)">Tovább</a>
                     </div>
                 </div>
             </div>
@@ -147,20 +148,20 @@
                         <h5>Polygon Mt Bromo N8</h5>
                         <h4 style="color: #4CBB17;">$5999</h4>
                         <h5><img style="height: 18px;" src="assets/icons/star.png"><span class="star"> 5</span></h5>
-                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(8)">Read more</a>
+                        <a class="btn btn-secondary btn-block" href="single-item.html" onclick="setIdOfItemToShow(8)">Tovább</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--================ End Shop Galery Area =================-->
+    <!--================ Vége a Shop Galéria Rész =================-->
     </br>
-    <!--================ Start Footer Area =================-->
+    <!--================ Kezdő Footer Rész =================-->
     <footer class="page-footer font-small">
         <div class="footer-copyright text-center py-3">© 2025 Copyright:
             <a href="mailto:kiss.attila.roland.26@dszcbaross.edu.hu"> kiss.attila.roland.26@dszcbaross.edu.hu</a>
         </div>
     </footer>
-    <!--================ End Footer Area =================-->
+    <!--================ Vége a Footer Rész =================-->
 </body>
 </html>

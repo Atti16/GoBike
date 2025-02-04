@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" /> <!-- for css @media -->
-    <title>Go-Bicikli Shop - Shop</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" /> <!-- CSS @media használatához -->
+    <title>Go-Bicikli Shop - Bolt</title>
     <link rel="icon" type="image/x-icon" href="assets/images/gb-logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/countdown.css">
@@ -16,7 +16,7 @@
     <script src="src/isUserLoggedIn.js"></script>
 </head>
 <body onload="generateTable();changeLoginText()">
-    <!--================ Start Header Menu Area =================-->
+    <!--================ Kezdőlap Menü Kezdete =================-->
     <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top topnav">
             <a class="navbar-brand" href="index.html">Go-Bicikli</a>
@@ -26,93 +26,93 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link color-white" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link color-white" href="index.html">Kezdőlap <span class="sr-only">(aktív)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.html">Categories</a>
+                        <a class="nav-link" href="category.html">Kategóriák</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="shop.html">Shop</a></li>
+                        <a class="nav-link" href="shop.html">Bolt</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a></li>
+                        <a class="nav-link" href="contact.html">Kapcsolat</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="shopping-cart.html"><img style="height: 30px;" src="assets/icons/shopping-cart-white.png"></a></li>
+                        <a class="nav-link" href="shopping-cart.html"><img style="height: 30px;" src="assets/icons/shopping-cart-white.png"></a>
                     </li>
                 </ul>
             </div>
         </nav>
     </header>
-    <!--================ End Header Menu Area =================-->
+    <!--================ Menü Vége =================-->
     </br>
     </hr>
     <div class="container">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <h3 id="cartItemsHeader">Your shopping cart</h3>
+                    <h3 id="cartItemsHeader">A vásárlói kosarad</h3>
                     <div id="cartItems">
                         <!-- A kosár tartalma dinamikusan betöltődik -->
                     </div>
-                    <button class="btn btn-danger" onclick="clearBasket()">Remove items</button>
+                    <button class="btn btn-danger" onclick="clearBasket()">Tételek eltávolítása</button>
                     <a href="Payment.html" class="btn btn-success">Tovább a fizetéshez</a>
                 </div>
             </div>
         </div>
     </div>
-    <!--================ End Shop Galery Area =================-->
+    <!--================ Bolt Galéria Vége =================-->
     </br>
-    <!--================ Start Discount Area =================-->
+    <!--================ Kezdődik a Kedvezményes Rész =================-->
     <div class="container">
-        <h3>Membership discount</h3>
+        <h3>Tagsági kedvezmény</h3>
         <hr>
         <div class="row w-90 mx-auto justify-content-center" style="min-height: 50vh">
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-4">
                 <div class="card mx-auto text-center" style="background-color: silver;">
                     <div class="card-body pb-0">
-                        <h4>Silver</h4>
-                        <h3>Discount 10%</h3>
-                        <h5>Price:</h5>
+                        <h4>Ezüst</h4>
+                        <h3>Kedvezmény 10%</h3>
+                        <h5>Ár:</h5>
                         <h5>$ <span id="currPrice1">0</span></h5>
-                        <a class="btn btn-secondary btn-block" onclick="alert('Just calculation')">Become a member</a>
+                        <a class="btn btn-secondary btn-block" onclick="alert('Csak számítás')">Legyél tag</a>
                     </div>
                 </div>
             </div>
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-4">
                 <div class="card mx-auto text-center" style="background-color: goldenrod;">
                     <div class="card-body pb-0">
-                        <h4>Gold</h4>
-                        <h3>Discount 15%</h3>
-                        <h5>Price:</h5>
+                        <h4>Arany</h4>
+                        <h3>Kedvezmény 15%</h3>
+                        <h5>Ár:</h5>
                         <h5>$ <span id="currPrice2">0</span></h5>
-                        <a class="btn btn-secondary btn-block" onclick="alert('Just calculation')">Become a member</a>
+                        <a class="btn btn-secondary btn-block" onclick="alert('Csak számítás')">Legyél tag</a>
                     </div>
                 </div>
             </div>
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-4">
                 <div class="card mx-auto text-center" style="background-color: #CD7F32;">
                     <div class="card-body pb-0">
-                        <h4>Bronse</h4>
-                        <h3>Discount 5%</h3>
-                        <h5>Price:</h5>
+                        <h4>Bronz</h4>
+                        <h3>Kedvezmény 5%</h3>
+                        <h5>Ár:</h5>
                         <h5>$ <span id="currPrice3">0</span></h5>
-                        <a class="btn btn-secondary btn-block" onclick="alert('Just calculation')">Become a member</a>
+                        <a class="btn btn-secondary btn-block" onclick="alert('Csak számítás')">Legyél tag</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--================ End Discount Area =================-->
+    <!--================ Kedvezményes Rész Vége =================-->
     </br>
-    <!--================ Start Footer Area =================-->
+    <!--================ Kezdődik a Lábléc Rész =================-->
     <footer class="page-footer font-small">
         <div class="footer-copyright text-center py-3">© 2025 Copyright:
             <a href="mailto:kiss.attila.roland.26@dszcbaross.edu.hu"> kiss.attila.roland.26@dszcbaross.edu.hu</a>
         </div>
     </footer>
-    <!--================ End Footer Area =================-->
+    <!--================ Lábléc Vége =================-->
 </body>
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" /> <!-- for css @media -->
-    <title>Go-Bicikli Shop - Home</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" /> <!-- a css @media számára -->
+    <title>Go-Bicikli Shop - Kezdőlap</title>
     <link rel="icon" type="image/x-icon" href="assets/images/gb-logo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -15,7 +15,7 @@
     <script src="src/isUserLoggedIn.js"></script>
 </head>
 <body onload="displayDateAndTime();changeLoginText()">
-    <!--================ Start Header Menu Area =================-->
+    <!--================ Kezdőlap Menü Terület =================-->
     <header>
         <nav class="navbar navbar-expand-md navbar-light fixed-top topnav">
             <a class="navbar-brand" href="index.html">Go-Bicikli</a>
@@ -25,22 +25,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link color-white" href="index.html">Home</a>
+                        <a class="nav-link color-white" href="index.html">Kezdőlap</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="category.html">Categories</a>
+                        <a class="nav-link" href="category.html">Kategóriák</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shop.html">Shop</a></li>
+                        <a class="nav-link" href="shop.html">Bolt</a></li>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a></li>
+                        <a class="nav-link" href="contact.html">Kapcsolat</a></li>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="insert-new-item.html">New Item</a></li>
+                        <a class="nav-link" href="insert-new-item.html">Új termék</a></li>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="getItems()">Bikes List</a></li>
+                        <a class="nav-link" onclick="getItems()">Biciklik listája</a></li>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -51,35 +51,35 @@
             </div>
         </nav>
     </header>
-    <!--================ End Header Menu Area =================-->
-    <!--================ Start Home Photo With Show Now Area =================-->
+    <!--================ Vége a Kezdőlap Menü Területnek =================-->
+    <!--================ Kezdőlap Kép és Vásárlás Most Terület =================-->
     <div id="indexWraper">
     <div>
         <div class="container-fluid home-photo">  
             <div class="home-shop-now-btn">
                 <div class="vertical-center">
-                    <h2 style="color: black">Welcome to Go-Bicikli Web Shop</h2>
-                    <a class="btn btn-secondary" href="shop.html">Shop Now</a>
+                    <h2 style="color: black">Üdvözöljük a Go-Bicikli Webáruházban</h2>
+                    <a class="btn btn-secondary" href="shop.html">Vásárolj Most</a>
                 </div>
             </div>
         </div>
     </div>
-    <!--================ End Home Photo With Shop Now Area =================-->
-    <!--================ Start Welcome Area =================-->
+    <!--================ Vége a Kezdőlap Kép és Vásárlás Most Területnek =================-->
+    <!--================ Kezdőlap Üdvözlő Terület =================-->
     <div class="text-center pt-1">
-        <h2><small>We sell only the premium quality bicycles</small></h2>
-        <p>Start by searching in categories:</p>
+        <h2><small>Csak prémium minőségű bicikliket árulunk</small></h2>
+        <p>Kezd a keresést a kategóriákban:</p>
     </div>
-    <!--================ End Welcome Area =================-->
-    <!--================ Start Categoris Home Area =================-->
+    <!--================ Vége a Kezdőlap Üdvözlő Területnek =================-->
+    <!--================ Kezdőlap Kategóriák Terület =================-->
     <div class="container-fluid">
         <div class="row justify-content-md-center" style="width: 95%; margin: auto;">
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
                 <a class="cat-home" href="categories/mountain.html">
                     <div class="card mx-auto text-center">
-                    <img src="assets/images/Marin Bolinas Ridge 1 Photo.jpg" alt="Mountain" class="card-img-top">
+                    <img src="assets/images/Marin Bolinas Ridge 1 Photo.jpg" alt="Hegyi" class="card-img-top">
                         <div class="card-body pb-0">
-                            <h4 class="card-title">Mountain</h4>
+                            <h4 class="card-title">Hegyi</h4>
                         </div>
                     </div>
                 </a>
@@ -89,7 +89,7 @@
                     <div class="card mx-auto text-center">
                     <img src="assets/images/Marin Gestalt Photo.jpg" alt="Gravel" class="card-img-top">
                         <div class="card-body pb-0">
-                            <h4 class="card-title">Gravel</h4>
+                            <h4 class="card-title">Terep</h4>
                         </div>
                     </div>
                 </a>
@@ -97,9 +97,9 @@
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
                 <a class="cat-home" href="categories/road.html">
                     <div class="card mx-auto text-center">
-                    <img src="assets/images/Polygon Strattos S5 - Shimano 105 Photo.jpg" alt="Road" class="card-img-top">
+                    <img src="assets/images/Polygon Strattos S5 - Shimano 105 Photo.jpg" alt="Út" class="card-img-top">
                         <div class="card-body pb-0">
-                            <h4 class="card-title">Road</h4>
+                            <h4 class="card-title">Út</h4>
                         </div>
                     </div>
                 </a>
@@ -107,9 +107,9 @@
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
                 <a class="cat-home" href="categories/city.html">
                     <div class="card mx-auto text-center">
-                    <img src="assets/images/Marin Kentfield CS2 ST Photo.jpg" alt="City" class="card-img-top">
+                    <img src="assets/images/Marin Kentfield CS2 ST Photo.jpg" alt="Városi" class="card-img-top">
                         <div class="card-body pb-0">
-                            <h4 class="card-title">City</h4>
+                            <h4 class="card-title">Városi</h4>
                         </div>
                     </div>
                 </a>
@@ -117,53 +117,53 @@
             <div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
                 <a class="cat-home" href="categories/electric.html">
                     <div class="card mx-auto text-center pb-0">
-                    <img src="assets/images/Polygon Mt Bromo N7 Photo.jpg" alt="Electric" class="card-img-top">
+                    <img src="assets/images/Polygon Mt Bromo N7 Photo.jpg" alt="Elektromos" class="card-img-top">
                         <div class="card-body">
-                            <h4 class="card-title">Electric</h4>
+                            <h4 class="card-title">Elektromos</h4>
                         </div>
                     </div>
                 </a>
             </div>
         </div>
     </div>
-    <!--================ End Categoris Home Area =================-->  
+    <!--================ Vége a Kezdőlap Kategóriák Területnek =================-->  
     </br>
-    <!--================ Start Message Home Area =================-->
+    <!--================ Kezdőlap Üzenet Terület =================-->
     <div class="text-center pt-1">
-        <h2><small>The warranty on all purchased bicycles is 5 years!</small></h2>
-        <a class="btn btn-secondary" href="shop.html">Shop Now</a>
+        <h2><small>Minden megvásárolt biciklinkre 5 év garancia jár!</small></h2>
+        <a class="btn btn-secondary" href="shop.html">Vásárolj Most</a>
     </div>
-    <!--================ End Message Home Area =================-->
+    <!--================ Vége a Kezdőlap Üzenet Területnek =================-->
     </br>
-    <!--================ Start Newsletter Area =================-->
+    <!--================ Kezdőlap Hírlevél Terület =================-->
     <hr>
     <div class="justify-content-md-center pt-1">
         <form class="" action="">
             <div class="container justify-content-md-center">
                 <div class="row mb-3 text-center">
-                    <h4 class="col-12">Join our newsletter for latest news and offers</h4>
+                    <h4 class="col-12">Csatlakozz hírlevelünkhöz a legfrissebb hírekért és ajánlatokért</h4>
                     <div class="col-4 pr-1">
-                    <input type="text" class="form-control" placeholder="Name" name="name" required>
+                    <input type="text" class="form-control" placeholder="Név" name="name" required>
                     </div>
                     <div class="col-4 pr-1">
-                    <input type="text" class="form-control" placeholder="Email address" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                    <input type="text" class="form-control" placeholder="Email cím" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                     </div>
                     <div class="col-4 pr-1">
-                        <button type="submit" class="btn btn-primary btn-block" onclick="alert('Subscribe')">Subscribe</button>
+                        <button type="submit" class="btn btn-primary btn-block" onclick="alert('Feliratkozás')">Feliratkozás</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
     </div>
-    <!--================ End Newsletter Area =================-->
-    <!--================ Start Footer Area =================-->
+    <!--================ Vége a Kezdőlap Hírlevél Területnek =================-->
+    <!--================ Kezdőlap Lábjegyzet Terület =================-->
     <footer class="page-footer font-small">
         <span id="dateAndTime"></span>
-        <div class="footer-copyright text-center py-3">© 2025 Copyright:
+        <div class="footer-copyright text-center py-3">© 2025 Szerzői jogok:
             <a href="mailto:kiss.attila.roland.26@dszcbaross.edu.hu"> kiss.attila.roland.26@dszcbaross.edu.hu</a>
         </div>
     </footer>
-    <!--================ End Footer Area =================-->
+    <!--================ Vége a Kezdőlap Lábjegyzet Területnek =================-->
 </body>
 </html>
