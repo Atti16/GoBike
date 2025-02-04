@@ -63,6 +63,23 @@
             </div>
         </div>
     </div>
+    <script>
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cartItems');
+    
+            if (cart.length === 0) {
+                cartItems.innerHTML = "<p>A kosár üres.</p>";
+            } else {
+                let html = "<ul>";
+                cart.forEach(item => {
+                    html += `<li>${item.name} - Méret: ${item.size}, Szín: ${item.color}, Mennyiség: ${item.quantity}, Ár: ${item.price}$</li>`;
+                });
+                html += "</ul>";
+                cartItems.innerHTML = html;
+            }
+        }
+        </script>
     <!--================ Bolt Galéria Vége =================-->
     <!--================ Kezdődik a Lábléc Rész =================-->
     <footer class="page-footer font-small">
