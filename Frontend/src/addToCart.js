@@ -1,8 +1,8 @@
+
 function addToCart() {
     const urlParams = new URLSearchParams(window.location.search);
     const itemId = urlParams.get('id');
 
-    // Példa adatok (ezt később lecserélheted valós adatokra)
     const items = [
         { id: 1, name: "Marin Bolinas Ridge 1", price: "$599", rating: 4, image: "assets/images/Marin Bolinas Ridge 1 Blue.jpg" },
         { id: 2, name: "Marin Bolinas Ridge 2", price: "$699", rating: 4.5, image: "assets/images/Marin Bolinas Ridge 2 Black.jpg" },
@@ -17,8 +17,27 @@ function addToCart() {
     const item = items.find(i => i.id == itemId);
 
     if (item) {
+        const quantity = document.getElementById('qty').value;
+        const size = document.getElementById('itemSize').value;
+        const color = document.getElementById('itemColor').value;
+
+        const cartItem = {
+            ...item,
+            quantity: quantity,
+            size: size,
+            color: color
+        };
+
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(item);
+
+        // Ellenőrizzük, hogy a termék már szerepel-e a kosárban
+        const existingItem = cart.find(i => i.id === itemId && i.size === size && i.color === color);
+        if (existingItem) {
+            existingItem.quantity = parseInt(existingItem.quantity) + parseInt(quantity); // Mennyiség növelése
+        } else {
+            cart.push(cartItem); // Új termék hozzáadása
+        }
+
         localStorage.setItem('cart', JSON.stringify(cart));
         alert("Termék hozzáadva a kosárhoz!");
     }
