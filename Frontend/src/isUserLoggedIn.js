@@ -3,7 +3,7 @@ function changeLoginText() {
         document.getElementById("loginB").innerHTML = '<a class="nav-link" onClick="logoutUser()">Logout</a></li>';
     }
     if (sessionStorage.getItem("loggedin") === null) {
-        document.getElementById("loginB").innerHTML = '<a class="nav-link" href="auth/login.html">Login</a></li>';
+        document.getElementById("loginB").innerHTML = '<a class="nav-link" href="LoginandRegistration.html">Login</a></li>';
     }
 }
 function logoutUser() {
