@@ -78,5 +78,5 @@ function addNewItem(req, res) {
 
 // Szerver indítása
 app.listen(3000, () => {
-    console.log('Server is listening on port: 3000');
+    console.log('Fut a szerver a 3000-es porton.');
 });
