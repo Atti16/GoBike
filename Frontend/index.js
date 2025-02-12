@@ -134,25 +134,6 @@ function resetPageView(table) {
     }
     calcDiscount()
 }
-// calculate dicount
-function calcDiscount() {
-    basket = JSON.parse(localStorage.getItem("basket"));
-    if (basket.length !== 0) {
-        let sum = 0;
-        let sumQty = 0;
-        for (var i = 0; i < basket.length; i++) {
-            sumQty = basket[i].price * basket[i].quantity;
-            sum = sum + sumQty;
-        }
-        document.getElementById("currPrice1").innerHTML = Math.round(sum * 0.9); // 10%
-        document.getElementById("currPrice2").innerHTML = Math.round(sum * 0.85); // 15%
-        document.getElementById("currPrice3").innerHTML = Math.round(sum * 0.95); // 5%
-    } else {
-        document.getElementById("currPrice1").innerHTML = 0;
-        document.getElementById("currPrice2").innerHTML = 0;
-        document.getElementById("currPrice3").innerHTML = 0; 
-    }
-}
 function setIdOfItemToShow(id){
     // item will be shown on single item page, dinamicali  lodaded from Json
     const idToShow = id;
