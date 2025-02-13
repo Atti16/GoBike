@@ -94,21 +94,21 @@
     </div>
 
     <script>
-        // Átváltás a regisztrációs űrlapra
+        // Átváltás a regisztrációra
         document.getElementById('show-register').addEventListener('click', function(event) {
             event.preventDefault();
             document.getElementById('login-form').style.display = 'none';
             document.getElementById('register-form').style.display = 'block';
         });
 
-        // Átváltás a bejelentkezési űrlapra
+        // Átváltás a bejelentkezésre
         document.getElementById('show-login').addEventListener('click', function(event) {
             event.preventDefault();
             document.getElementById('register-form').style.display = 'none';
             document.getElementById('login-form').style.display = 'block';
         });
 
-        // Regisztrációs űrlap beküldése
+        // Regisztráció beküldése
         document.getElementById('register').addEventListener('submit', function(event) {
             event.preventDefault();
             const username = document.getElementById('register-username').value;
@@ -121,7 +121,7 @@
             document.getElementById('login-form').style.display = 'block';
         });
 
-        // Bejelentkezési űrlap beküldése
+        // Bejelentkezés beküldése
         document.getElementById('login').addEventListener('submit', function(event) {
             event.preventDefault();
             const username = document.getElementById('login-username').value;
