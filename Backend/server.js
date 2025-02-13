@@ -20,6 +20,15 @@ const connection = mysql.createConnection({
     port: '3306'
 });
 
+// Kapcsolódási hiba kezelése
+connection.connect((err) => {
+    if (err) {
+        console.error('Hiba a MySQL kapcsolat létrehozásakor:', err);
+        return;
+    }
+    console.log('Sikeresen csatlakozva a MySQL adatbázishoz.');
+});
+
 // TASK 4.
 // Product adding: after submitting a new product using the form, send the data to the server (use the POST method). Add the new product to the list of products.
 app.post('/addItem', addNewItem);
