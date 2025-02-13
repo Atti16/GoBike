@@ -5,7 +5,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (id, email, pass) VALUES
-(101, 'atti@atti', 'pass'),
+(101, '', 'pass'),
 (102, '', 'pass'),
 (103, 'test@test', 'test');
 
