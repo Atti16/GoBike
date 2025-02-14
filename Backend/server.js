@@ -15,7 +15,7 @@ app.use(cors());
 const connection = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root', // Cseréld ki a saját felhasználónevedre
-    password: 'pass', // Cseréld ki a saját jelszavadra
+    password: '', // Cseréld ki a saját jelszavadra
     database: 'gobike', // Cseréld ki a saját adatbázis nevedre
     port: '3306'
 });
