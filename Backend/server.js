@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-const mysql = require('mysql2'); // Importáljuk a mysql2 csomagot
+const mysql = require('mysql2'); 
 
 const app = express();
 
@@ -14,9 +14,9 @@ app.use(cors());
 // MySQL kapcsolat létrehozása
 const connection = mysql.createConnection({
     host: '127.0.0.1',
-    user: 'root', // Cseréld ki a saját felhasználónevedre
-    password: '', // Cseréld ki a saját jelszavadra
-    database: 'gobike', // Cseréld ki a saját adatbázis nevedre
+    user: 'root', 
+    password: '', 
+    database: 'gobike', 
     port: '3306'
 });
 
@@ -29,18 +29,17 @@ connection.connect((err) => {
     console.log('Sikeresen csatlakozva a MySQL adatbázishoz.');
 });
 
-// TASK 4.
-// Product adding: after submitting a new product using the form, send the data to the server (use the POST method). Add the new product to the list of products.
+
 app.post('/addItem', addNewItem);
 
-// Product loading: the basic product offer should be downloaded from the server (use the GET method). Show products in a "dynamic table" upon successful load.
+
 app.get('/getItems', getItems);
 
-// Login: Simulate user login. When you click on the login button, send the information to the server (via the POST method).
+
 app.post('/login', loginUser);
 
 function getItems(req, res) {
-    // Sync will wait until all data is loaded
+   
     const data = fs.readFileSync('Frontend/bikesInfo.json');
     res.send(data);
 }
