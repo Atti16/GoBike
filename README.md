@@ -79,3 +79,15 @@ SELECT * FROM users;
 SELECT * FROM bikes;
 SELECT * FROM rentals; -->
 >>>>>>> ddace84 (asd)
+
+
+első lépés 
+cd Backend
+npm start
+
+második lépés 
+cd Frontend
+npm install hogyha kell
+npm start
+
+autómatikusan bedob az oldalra
