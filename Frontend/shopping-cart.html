@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" /> <!-- CSS @media használatához -->
+    <meta content="width=device-width, initial-scale=1" name="viewport" /> 
     <title>Go-Bicikli Shop - Bolt</title>
     <link rel="icon" type="image/x-icon" href="assets/images/gb-logo.png">
     <link rel="stylesheet" href="css/style.css">
@@ -33,7 +33,7 @@
 
     function clearBasket() {
         localStorage.removeItem('cart');
-        generateTable(); // Frissítjük a kosár tartalmát
+        generateTable(); 
         alert('A kosár kiürítve!');
     }
     </script>
@@ -78,7 +78,6 @@
                 <div class="col-12">
                     <h3 id="cartItemsHeader">A kosarad</h3>
                     <div id="cartItems">
-                        <!-- A kosár tartalma dinamikusan betöltődik -->
                     </div>
                     <button class="btn btn-danger" onclick="clearBasket()">Tételek eltávolítása</button>
                     <a href="delivery.html" class="btn btn-success">Tovább a szállításhoz</a>

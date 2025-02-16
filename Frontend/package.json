@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "GoBicikli Webshop",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
