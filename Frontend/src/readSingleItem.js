@@ -1,5 +1,3 @@
-// this file will load given item from JSON file, 
-// click on "Read more" will pass ID by localstorage of an item. 5 dot from JS task
 var data;
 var id;
 function loadItemToShow() {

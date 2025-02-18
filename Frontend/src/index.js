@@ -1,4 +1,3 @@
-// this file will manipulate with cart. 4,6,7 dot from JS task
 var basket = new Array();
 
 function add(item, price) {
