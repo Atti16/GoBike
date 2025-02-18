@@ -1,4 +1,3 @@
-// Frontend/script.js
 
 function addToCart() {
     const item = {
