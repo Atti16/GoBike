@@ -1,4 +1,3 @@
-// 3 dot from JS task works on Login page
 function validateFormLogin() {
     err1 = " maximum character is 15";
     err2 = " minimum character is 8";

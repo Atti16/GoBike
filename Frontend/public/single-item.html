@@ -121,7 +121,13 @@
     </div>
     </br>
     </hr>
-    <script>
+    <script>    
+    <!-- Kosár megjelenítése -->
+<div class="container mt-4">
+    <h3>Kosár tartalma</h3>
+    <div id="cartContainer"></div>
+    <button class="btn btn-danger mt-2" onclick="clearCart()">Kosár törlése</button>
+</div>
     function addToCart() {
         const item = {
             name: document.getElementById('dynamicItemName').innerText,
@@ -139,6 +145,7 @@
         alert('Termék hozzáadva a kosárhoz!');
     }
     </script>>
+
     <!--================ Hírlevél Feliratkozás Kezdete =================-->
     <hr>
     <div class="justify-content-md-center pt-1">
