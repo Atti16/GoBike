@@ -1,140 +1,181 @@
-var basket = new Array();
+import React, { useState } from 'react';
 
-function add(item, price) {
-    basket = JSON.parse(localStorage.getItem("basket"));
+function AuthPage() {
+  const [isLogin, setIsLogin] = useState(true);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-    if (basket == null) {
-        basket = new Array();
+  const handleRegisterSubmit = (event) => {
+    event.preventDefault();
+    if (password === confirmPassword) {
+      localStorage.setItem(username, password);
+      alert('Sikeres regisztráció! Most már be tudsz jelentkezni.');
+      setIsLogin(true);
+      resetForm();
+    } else {
+      alert('A jelszavak nem egyeznek meg!');
     }
-    const c = document.getElementById("itemColor").value;
-    const s = document.getElementById("itemSize").value;
-    const q = document.getElementById("qty").value;
-    const product = new Object();
-    product.id = generateId();
-    product.item = item;
-    product.price = price;
-    product.size = s;
-    product.color = c;
-    product.quantity = q;
+  };
 
-    basket.push(product);
-
-    console.log(basket);
-
-    localStorage.setItem("basket", JSON.stringify(basket));
-
-    alert("Item added to chart!");
-}
-
-function generateId() {
-    const newId = basket.length + 1;
-
-    return newId;
-}
-
-function generateTable() {
-    basket = JSON.parse(localStorage.getItem("basket"));
-
-    if (basket == null) {
-        basket = new Array();
+  const handleLoginSubmit = (event) => {
+    event.preventDefault();
+    const storedPassword = localStorage.getItem(username);
+    if (storedPassword === password) {
+      alert('Sikeres bejelentkezés!');
+      // Átirányítás a home oldalra (például React Router-t használhatsz itt)
+      window.location.href = 'home.html';
+    } else {
+      alert('Érvénytelen felhasználónév vagy jelszó!');
     }
+  };
 
-    //Create a HTML Table element.
-    const table = document.createElement("TABLE");
-    table.className = "col-10 mb-4";
+  const resetForm = () => {
+    setUsername('');
+    setPassword('');
+    setFullName('');
+    setConfirmPassword('');
+  };
 
-    //Add the header row.
-    var row = table.insertRow(-1);
-    var headerCell = document.createElement("TH");
-    headerCell.innerHTML = "Item";
-    row.appendChild(headerCell);
-
-    headerCell = document.createElement("TH");
-    headerCell.innerHTML = "Price";
-    row.appendChild(headerCell);
-
-    headerCell = document.createElement("TH");
-    headerCell.innerHTML = "Size";
-    row.appendChild(headerCell);
-
-    headerCell = document.createElement("TH");
-    headerCell.innerHTML = "Color";
-    row.appendChild(headerCell);
-
-    headerCell = document.createElement("TH");
-    headerCell.innerHTML = "Quantity";
-    row.appendChild(headerCell);
-
-    headerCell = document.createElement("TH");
-    headerCell.innerHTML = "Delete";
-    row.appendChild(headerCell);
-
-    let btn = document.createElement("div");
-
-    console.log(basket);
-
-    //Add the data rows.
-    for (var i = 0; i < basket.length; i++) {
-        row = table.insertRow(-1);
-        var cell = row.insertCell(-1);
-        cell.innerHTML = basket[i].item;
-
-        cell = row.insertCell(-1);
-        cell.innerHTML = basket[i].price;
-
-        cell = row.insertCell(-1);
-        cell.innerHTML = basket[i].size;
-
-        cell = row.insertCell(-1);
-        cell.innerHTML = basket[i].color;
-
-        cell = row.insertCell(-1);
-        cell.innerHTML = basket[i].quantity;
-
-        btn.innerHTML = "<button type='button' class='btn btn-outline-danger' onclick='removeItem("+i+")'><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'><path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'></path><path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'></path></svg></button>";
-
-        cell = row.insertCell(-1);
-        cell.innerHTML = btn.innerHTML;
-    }
-    resetPageView(table);
+  return (
+    <div style={styles.container}>
+      {isLogin ? (
+        <div style={styles.formContainer}>
+          <h2>Bejelentkezés</h2>
+          <form onSubmit={handleLoginSubmit}>
+            <input
+              type="text"
+              placeholder="Felhasználónév"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              style={styles.input}
+            />
+            <input
+              type="password"
+              placeholder="Jelszó"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              style={styles.input}
+            />
+            <button type="submit" style={styles.button}>
+              Bejelentkezés
+            </button>
+          </form>
+          <p>
+            Nincs még fiókod?{' '}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsLogin(false);
+              }}
+              style={styles.link}
+            >
+              Regisztrálj itt!
+            </a>
+          </p>
+        </div>
+      ) : (
+        <div style={styles.formContainer}>
+          <h2>Regisztráció</h2>
+          <form onSubmit={handleRegisterSubmit}>
+            <input
+              type="text"
+              placeholder="Felhasználónév"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              style={styles.input}
+            />
+            <input
+              type="text"
+              placeholder="Teljes név"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              required
+              style={styles.input}
+            />
+            <input
+              type="password"
+              placeholder="Jelszó"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              style={styles.input}
+            />
+            <input
+              type="password"
+              placeholder="Jelszó megerősítése"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              style={styles.input}
+            />
+            <button type="submit" style={styles.button}>
+              Regisztrálás
+            </button>
+          </form>
+          <p>
+            Már van fiókod?{' '}
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsLogin(true);
+              }}
+              style={styles.link}
+            >
+              Jelentkezz be itt!
+            </a>
+          </p>
+        </div>
+      )}
+    </div>
+  );
 }
 
-function clearBasket() {
-    localStorage.clear();
-    resetPageView(null);
-}
-// remove selected item from basket
-function removeItem(i) {
-    const items = JSON.parse(localStorage.getItem("basket"));
-    delete items[i];
-    console.log("Removed item: "+ items[i]);
+const styles = {
+  container: {
+    fontFamily: 'Arial, sans-serif',
+    backgroundColor: '#f4f4f4',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    margin: 0,
+  },
+  formContainer: {
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    width: '300px',
+    textAlign: 'center',
+  },
+  input: {
+    padding: '10px',
+    marginBottom: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+  },
+  button: {
+    padding: '10px',
+    backgroundColor: '#28a745',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  },
+  buttonHover: {
+    backgroundColor: '#218838',
+  },
+  link: {
+    color: '#007bff',
+    textDecoration: 'none',
+  },
+};
 
-    var tempBasket = new Array();
-    for (var i = 0; i < items.length; i++) {
-        if (typeof items[i] !== 'undefined') {
-            tempBasket.push(items[i])
-        }
-    }
-    basket = new Array();
-    basket = tempBasket;
-    localStorage.setItem("basket", JSON.stringify(basket));
-    generateTable();
-}
-function resetPageView(table) {
-    const itemsHeader = document.getElementById("cartItemsHeader");
-    const dvTable = document.getElementById("cartItems");
-    itemsHeader.innerHTML = "";
-    dvTable.innerHTML = "";
-    if (basket.length == 0) { 
-        itemsHeader.innerHTML = "Your shopping cart is empty...";
-    } else { 
-        itemsHeader.innerHTML = "Your Items:";
-        dvTable.appendChild(table);
-    }
-    calcDiscount()
-}
-function setIdOfItemToShow(id){
-    // item will be shown on single item page, dinamicali  lodaded from Json
-    const idToShow = id;
-    localStorage.setItem("itemToShow", JSON.stringify(idToShow));
-}
+export default AuthPage;

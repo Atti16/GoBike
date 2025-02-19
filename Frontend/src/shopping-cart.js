@@ -1,136 +1,102 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Header
-    const header = document.createElement('header');
-    const nav = document.createElement('nav');
-    nav.classList.add('navbar', 'navbar-expand-md', 'navbar-light', 'fixed-top', 'topnav');
-    header.appendChild(nav);
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-    const brandLink = document.createElement('a');
-    brandLink.classList.add('navbar-brand');
-    brandLink.href = 'home.html';
-    brandLink.textContent = 'Go-Bicikli';
-    nav.appendChild(brandLink);
+const ShoppingCart = () => {
+  const [cart, setCart] = useState([]);
+  
+  useEffect(() => {
+    // Fetch cart from localStorage when component loads
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    setCart(savedCart);
+  }, []);
 
-    const toggleButton = document.createElement('button');
-    toggleButton.classList.add('navbar-toggler');
-    toggleButton.type = 'button';
-    toggleButton.setAttribute('data-toggle', 'collapse');
-    toggleButton.setAttribute('data-target', '#navbarNav');
-    const toggleIcon = document.createElement('span');
-    toggleIcon.classList.add('navbar-toggler-icon');
-    toggleButton.appendChild(toggleIcon);
-    nav.appendChild(toggleButton);
+  const clearBasket = () => {
+    localStorage.removeItem('cart');
+    setCart([]); // Update state to reflect cleared cart
+    alert('A kosár kiürítve!');
+  };
 
-    const navbarCollapse = document.createElement('div');
-    navbarCollapse.classList.add('collapse', 'navbar-collapse');
-    navbarCollapse.id = 'navbarNav';
-    nav.appendChild(navbarCollapse);
+  return (
+    <div>
+      {/*================ Kezdőlap Menü Kezdete =================*/}
+      <header>
+        <nav className="navbar navbar-expand-md navbar-light fixed-top topnav">
+          <a className="navbar-brand" href="home.html">Go-Bicikli</a>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <a className="nav-link color-white" href="home.html">Kezdőlap</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="category.html">Kategóriák</a>
+              </li>
+              <li className="nav-item active">
+                <a className="nav-link" href="shop.html">Bolt</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="contact.html">Kapcsolat</a>
+              </li>
+            </ul>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link" href="shopping-cart.html">
+                  <img style={{ height: '30px' }} src="assets/icons/shopping-cart-white.png" alt="cart" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      {/*================ Menü Vége =================*/}
+      
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <h3 id="cartItemsHeader">A kosarad</h3>
+            <div id="cartItems">
+              {cart.length === 0 ? (
+                <p>A kosár üres.</p>
+              ) : (
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Termék neve</th>
+                      <th>Méret</th>
+                      <th>Szín</th>
+                      <th>Mennyiség</th>
+                      <th>Ár</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cart.map((item, index) => (
+                      <tr key={index}>
+                        <td>{item.name}</td>
+                        <td>{item.size}</td>
+                        <td>{item.color}</td>
+                        <td>{item.quantity}</td>
+                        <td>{item.price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+            <button className="btn btn-danger" onClick={clearBasket}>Tételek eltávolítása</button>
+            <Link to="/delivery" className="btn btn-success">Tovább a szállításhoz</Link>
+          </div>
+        </div>
+      </div>
 
-    const ulNav = document.createElement('ul');
-    ulNav.classList.add('navbar-nav', 'mr-auto');
-    navbarCollapse.appendChild(ulNav);
+      {/*================ Kezdődik a Lábléc Rész =================*/}
+      <footer className="page-footer font-small">
+        <div className="footer-copyright text-center py-3">© 2025 Copyright</div>
+      </footer>
+      {/*================ Lábléc Vége =================*/}
+    </div>
+  );
+};
 
-    const pages = [
-        { name: 'Kezdőlap', link: 'home.html' },
-        { name: 'Kategóriák', link: 'category.html' },
-        { name: 'Bolt', link: 'shop.html', active: true },
-        { name: 'Kapcsolat', link: 'contact.html' }
-    ];
-
-    pages.forEach(page => {
-        const li = document.createElement('li');
-        li.classList.add('nav-item');
-        if (page.active) li.classList.add('active');
-        const a = document.createElement('a');
-        a.classList.add('nav-link');
-        a.href = page.link;
-        a.textContent = page.name;
-        li.appendChild(a);
-        ulNav.appendChild(li);
-    });
-
-    document.body.appendChild(header);
-
-    // Cart Container
-    const container = document.createElement('div');
-    container.classList.add('container', 'mt-5', 'pt-5');
-    document.body.appendChild(container);
-
-    const row = document.createElement('div');
-    row.classList.add('row', 'justify-content-center');
-    container.appendChild(row);
-
-    const col = document.createElement('div');
-    col.classList.add('col-12');
-    row.appendChild(col);
-
-    const cartHeader = document.createElement('h3');
-    cartHeader.textContent = 'A kosarad';
-    col.appendChild(cartHeader);
-
-    const cartItemsDiv = document.createElement('div');
-    cartItemsDiv.id = 'cartItems';
-    col.appendChild(cartItemsDiv);
-
-    const clearButton = document.createElement('button');
-    clearButton.classList.add('btn', 'btn-danger', 'mr-2');
-    clearButton.textContent = 'Tételek eltávolítása';
-    clearButton.addEventListener('click', clearBasket);
-    col.appendChild(clearButton);
-
-    const proceedButton = document.createElement('a');
-    proceedButton.classList.add('btn', 'btn-success');
-    proceedButton.href = 'delivery.html';
-    proceedButton.textContent = 'Tovább a szállításhoz';
-    col.appendChild(proceedButton);
-
-    // Footer
-    const footer = document.createElement('footer');
-    footer.classList.add('page-footer', 'font-small', 'text-center', 'py-3');
-    footer.textContent = '© 2025 Szerzői jogok';
-    document.body.appendChild(footer);
-
-    // Functions
-    function generateTable() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cartItemsDiv.innerHTML = '';
-
-        if (cart.length === 0) {
-            cartItemsDiv.innerHTML = "<p>A kosár üres.</p>";
-        } else {
-            let table = document.createElement('table');
-            table.classList.add('table');
-
-            let thead = document.createElement('thead');
-            let trHead = document.createElement('tr');
-            ['Termék neve', 'Méret', 'Szín', 'Mennyiség', 'Ár'].forEach(text => {
-                let th = document.createElement('th');
-                th.textContent = text;
-                trHead.appendChild(th);
-            });
-            thead.appendChild(trHead);
-            table.appendChild(thead);
-
-            let tbody = document.createElement('tbody');
-            cart.forEach(item => {
-                let tr = document.createElement('tr');
-                ['name', 'size', 'color', 'quantity', 'price'].forEach(prop => {
-                    let td = document.createElement('td');
-                    td.textContent = item[prop];
-                    tr.appendChild(td);
-                });
-                tbody.appendChild(tr);
-            });
-            table.appendChild(tbody);
-            cartItemsDiv.appendChild(table);
-        }
-    }
-
-    function clearBasket() {
-        localStorage.removeItem('cart');
-        generateTable();
-        alert('A kosár kiürítve!');
-    }
-
-    generateTable();
-});
+export default ShoppingCart;

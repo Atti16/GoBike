@@ -1,133 +1,125 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Header
-    const header = document.createElement('header');
-    const nav = document.createElement('nav');
-    nav.classList.add('navbar', 'navbar-expand-md', 'navbar-light', 'fixed-top', 'topnav');
-    header.appendChild(nav);
+import React, { useState } from 'react';
 
-    const brandLink = document.createElement('a');
-    brandLink.classList.add('navbar-brand');
-    brandLink.href = 'home.html';
-    brandLink.textContent = 'Go-Bicikli';
-    nav.appendChild(brandLink);
+const ItemInsert = () => {
+  const [itemName, setItemName] = useState('');
+  const [description, setDescription] = useState('');
+  const [rate, setRate] = useState('');
+  const [price, setPrice] = useState('');
+  const [image, setImage] = useState(null);
+  const [alertMessage, setAlertMessage] = useState('');
 
-    const toggleButton = document.createElement('button');
-    toggleButton.classList.add('navbar-toggler');
-    toggleButton.type = 'button';
-    toggleButton.setAttribute('data-toggle', 'collapse');
-    toggleButton.setAttribute('data-target', '#navbarNav');
-    const toggleIcon = document.createElement('span');
-    toggleIcon.classList.add('navbar-toggler-icon');
-    toggleButton.appendChild(toggleIcon);
-    nav.appendChild(toggleButton);
+  const handleSubmit = () => {
+    // Add your logic here to handle the form submission
+    setAlertMessage('Termék hozzáadva!');
+  };
 
-    const navbarCollapse = document.createElement('div');
-    navbarCollapse.classList.add('collapse', 'navbar-collapse');
-    navbarCollapse.id = 'navbarNav';
-    nav.appendChild(navbarCollapse);
+  return (
+    <div>
+      {/* Navigation */}
+      <header>
+        <nav className="navbar navbar-expand-md navbar-light fixed-top topnav">
+          <a className="navbar-brand" href="home.html">Go-Bicikli</a>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <a className="nav-link color-white" href="home.html">Kezdőlap</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="category.html">Kategóriák</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="shop.html">Bolt</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="contact.html">Kapcsolat</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
 
-    const ulNav = document.createElement('ul');
-    ulNav.classList.add('navbar-nav', 'mr-auto');
-    navbarCollapse.appendChild(ulNav);
+      <div className="container container-height">
+        <div className="row justify-content-center">
+          <div className="col-12 col-xs-10 col-sm-8 col-md-8 col-lg-8 col-xl-8 mb-4">
+            <div className="form-group">
+              <label htmlFor="InputItemName">Név</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputItemName"
+                placeholder="Kerékpár neve"
+                value={itemName}
+                onChange={(e) => setItemName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="formControlTextarea1">Leírás</label>
+              <textarea
+                className="form-control"
+                id="formControlTextarea1"
+                rows="5"
+                placeholder="Kerékpár leírása"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputRate">Értékelés</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputRate"
+                placeholder="Értékelés"
+                value={rate}
+                onChange={(e) => setRate(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="price">Ár</label>
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="itemPrice">$</span>
+                </div>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="newItemPrice"
+                  placeholder="Ár"
+                  pattern="^[0-9]*$"
+                  required
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="image">Kép</label>
+              <input
+                type="file"
+                id="img"
+                name="img"
+                accept="image/*"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </div>
+            <br />
+            <button onClick={handleSubmit} className="btn btn-primary btn-block">
+              Beszúrás
+            </button>
+            {alertMessage && <div id="addedAlert" className="mt-2">{alertMessage}</div>}
+          </div>
+        </div>
+      </div>
+      
+      {/* Footer */}
+      <footer className="page-footer font-small">
+        <div className="footer-copyright text-center py-3">© 2025 Szerzői jogok</div>
+      </footer>
+    </div>
+  );
+};
 
-    const pages = [
-        { name: 'Főoldal', link: 'home.html' },
-        { name: 'Kategóriák', link: 'category.html' },
-        { name: 'Bolt', link: 'shop.html' },
-        { name: 'Kapcsolat', link: 'contact.html' }
-    ];
-
-    pages.forEach(page => {
-        const li = document.createElement('li');
-        li.classList.add('nav-item');
-        const a = document.createElement('a');
-        a.classList.add('nav-link');
-        a.href = page.link;
-        a.textContent = page.name;
-        li.appendChild(a);
-        ulNav.appendChild(li);
-    });
-
-    document.body.appendChild(header);
-
-    // Form Section
-    const container = document.createElement('div');
-    container.classList.add('container', 'container-height', 'mt-5', 'pt-5');
-    document.body.appendChild(container);
-
-    const row = document.createElement('div');
-    row.classList.add('row', 'justify-content-center');
-    container.appendChild(row);
-
-    const formCol = document.createElement('div');
-    formCol.classList.add('col-md-8', 'mb-4');
-    row.appendChild(formCol);
-
-    const formGroups = [
-        { label: 'Név', id: 'inputItemName', type: 'text', placeholder: 'Kerékpár neve' },
-        { label: 'Leírás', id: 'formControlTextarea1', type: 'textarea', placeholder: 'Kerékpár leírása' },
-        { label: 'Értékelés', id: 'inputRate', type: 'text', placeholder: 'Értékelés' },
-        { label: 'Ár', id: 'newItemPrice', type: 'text', placeholder: 'Ár' }
-    ];
-
-    formGroups.forEach(group => {
-        const formGroup = document.createElement('div');
-        formGroup.classList.add('form-group');
-        
-        const label = document.createElement('label');
-        label.setAttribute('for', group.id);
-        label.textContent = group.label;
-        formGroup.appendChild(label);
-        
-        let input;
-        if (group.type === 'textarea') {
-            input = document.createElement('textarea');
-            input.rows = 5;
-        } else {
-            input = document.createElement('input');
-            input.type = group.type;
-        }
-        input.classList.add('form-control');
-        input.id = group.id;
-        input.placeholder = group.placeholder;
-        formGroup.appendChild(input);
-        
-        formCol.appendChild(formGroup);
-    });
-
-    const fileGroup = document.createElement('div');
-    fileGroup.classList.add('form-group');
-    
-    const fileLabel = document.createElement('label');
-    fileLabel.setAttribute('for', 'img');
-    fileLabel.textContent = 'Kép';
-    fileGroup.appendChild(fileLabel);
-    
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.id = 'img';
-    fileInput.name = 'img';
-    fileInput.accept = 'image/*';
-    fileGroup.appendChild(fileInput);
-    
-    formCol.appendChild(fileGroup);
-    
-    const addButton = document.createElement('button');
-    addButton.classList.add('btn', 'btn-primary', 'btn-block');
-    addButton.textContent = 'Beszúrás';
-    addButton.addEventListener('click', function() {
-        alert('Tétel hozzáadva!');
-    });
-    formCol.appendChild(addButton);
-
-    const alertDiv = document.createElement('div');
-    alertDiv.id = 'addedAlert';
-    alertDiv.classList.add('mt-2');
-    formCol.appendChild(alertDiv);
-
-    // Footer
-    const footer = document.createElement('footer');
-    footer.classList.add('page-footer', 'font-small', 'text-center', 'py-3');
-    footer.textContent = '© 2025 Szerzői jogok';
-    document.body.appendChild(footer);
-});
+export default ItemInsert;

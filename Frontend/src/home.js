@@ -1,216 +1,142 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Header
-    const header = document.createElement('header');
-    const nav = document.createElement('nav');
-    nav.classList.add('navbar', 'navbar-expand-md', 'navbar-light', 'fixed-top', 'topnav');
-    header.appendChild(nav);
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-    const brandLink = document.createElement('a');
-    brandLink.classList.add('navbar-brand');
-    brandLink.href = 'home.html';
-    brandLink.textContent = 'Go-Bicikli';
-    nav.appendChild(brandLink);
+const HomePage = () => {
+  useEffect(() => {
+    // Here you can include any JS you want to run on page load, like setting the date & time or changing login text
+    displayDateAndTime();
+    changeLoginText();
+  }, []);
 
-    const toggleButton = document.createElement('button');
-    toggleButton.classList.add('navbar-toggler');
-    toggleButton.type = 'button';
-    toggleButton.setAttribute('data-toggle', 'collapse');
-    toggleButton.setAttribute('data-target', '#navbarNav');
-    const toggleIcon = document.createElement('span');
-    toggleIcon.classList.add('navbar-toggler-icon');
-    toggleButton.appendChild(toggleIcon);
-    nav.appendChild(toggleButton);
+  const displayDateAndTime = () => {
+    const dateTimeElement = document.getElementById('dateAndTime');
+    const currentDate = new Date();
+    dateTimeElement.textContent = currentDate.toLocaleString();
+  };
 
-    const navbarCollapse = document.createElement('div');
-    navbarCollapse.classList.add('collapse', 'navbar-collapse');
-    navbarCollapse.id = 'navbarNav';
-    nav.appendChild(navbarCollapse);
+  const changeLoginText = () => {
+    // Logic to change the login text if the user is logged in (you may need to manage authentication state here)
+  };
 
-    const ulNav = document.createElement('ul');
-    ulNav.classList.add('navbar-nav', 'mr-auto');
-    navbarCollapse.appendChild(ulNav);
+  return (
+    <div>
+      {/* Header (Menu) */}
+      <header>
+        <nav className="navbar navbar-expand-md navbar-light fixed-top topnav">
+          <Link className="navbar-brand" to="/home">Go-Bicikli</Link>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item active">
+                <Link className="nav-link color-white" to="/home">Kezdőlap</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/category">Kategóriák</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/shop">Bolt</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact">Kapcsolat</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/insert-new-item">Új termék</Link>
+              </li>
+            </ul>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link" to="/shopping-cart">
+                  <img style={{ height: '30px' }} src="../Frontend/assets/icons/shopping-cart-white.png" alt="Shopping Cart" />
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
 
-    const pages = [
-        { name: 'Főoldal', link: 'home.html' },
-        { name: 'Kategóriák', link: 'category.html' },
-        { name: 'Bolt', link: 'shop.html' },
-        { name: 'Kapcsolat', link: 'contact.html' }
-    ];
+      {/* Home Page Banner */}
+      <div id="indexWraper">
+        <div>
+          <div className="container-fluid home-photo">
+            <div className="home-shop-now-btn">
+              <div className="vertical-center">
+                <h2 style={{ color: 'black' }}>Üdvözöljük a Go-Bicikli Webáruházban</h2>
+                <Link className="btn btn-secondary" to="/shop">Vásárolj Most</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    pages.forEach(page => {
-        const li = document.createElement('li');
-        li.classList.add('nav-item');
-        const a = document.createElement('a');
-        a.classList.add('nav-link');
-        a.href = page.link;
-        a.textContent = page.name;
-        li.appendChild(a);
-        ulNav.appendChild(li);
-    });
+      {/* Welcome Message */}
+      <div className="text-center pt-1">
+        <h2><small>Csak prémium minőségű bicikliket árulunk</small></h2>
+        <p>Kezd a keresést a kategóriákban:</p>
+      </div>
 
-    const shoppingCart = document.createElement('ul');
-    shoppingCart.classList.add('navbar-nav');
-    navbarCollapse.appendChild(shoppingCart);
+      {/* Categories Section */}
+      <div className="container-fluid">
+        <div className="row justify-content-md-center" style={{ width: '95%', margin: 'auto' }}>
+          <CategoryCard link="/categories/mountain" title="Hegyi" image="frontend/assets/images/Marin Bolinas Ridge 1 Photo.jpg" />
+          <CategoryCard link="/categories/gravel" title="Terep" image="assets/images/Marin Gestalt Photo.jpg" />
+          <CategoryCard link="/categories/road" title="Út" image="assets/images/Polygon Strattos S5 - Shimano 105 Photo.jpg" />
+          <CategoryCard link="/categories/city" title="Városi" image="assets/images/Marin Kentfield CS2 ST Photo.jpg" />
+          <CategoryCard link="/categories/electric" title="Elektromos" image="assets/images/Polygon Mt Bromo N7 Photo.jpg" />
+        </div>
+      </div>
 
-    const cartItem = document.createElement('li');
-    cartItem.classList.add('nav-item');
-    const cartLink = document.createElement('a');
-    cartLink.classList.add('nav-link');
-    cartLink.href = 'shopping-cart.html';
-    const cartImg = document.createElement('img');
-    cartImg.style.height = '30px';
-    cartImg.src = 'assets/icons/shopping-cart-white.png';
-    cartLink.appendChild(cartImg);
-    cartItem.appendChild(cartLink);
-    shoppingCart.appendChild(cartItem);
+      {/* Message Section */}
+      <div className="text-center pt-1">
+        <h2><small>Minden megvásárolt biciklinkre 5 év garancia jár!</small></h2>
+        <Link className="btn btn-secondary" to="/shop">Vásárolj Most</Link>
+      </div>
 
-    document.body.appendChild(header);
+      {/* Newsletter Section */}
+      <hr />
+      <div className="justify-content-md-center pt-1">
+        <form>
+          <div className="container justify-content-md-center">
+            <div className="row mb-3 text-center">
+              <h4 className="col-12">Csatlakozz hírlevelünkhöz a legfrissebb hírekért és ajánlatokért</h4>
+              <div className="col-4 pr-1">
+                <input type="text" className="form-control" placeholder="Név" name="name" required />
+              </div>
+              <div className="col-4 pr-1">
+                <input type="text" className="form-control" placeholder="Email cím" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+              </div>
+              <div className="col-4 pr-1">
+                <button type="submit" className="btn btn-primary btn-block" onClick={() => alert('Feliratkozás')}>Feliratkozás</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
 
-    // Categories Section
-    const container = document.createElement('div');
-    container.classList.add('container-fluid');
-    document.body.appendChild(container);
+      {/* Footer */}
+      <footer className="page-footer font-small">
+        <span id="dateAndTime"></span>
+        <div className="footer-copyright text-center py-3">© 2025 Szerzői jogok</div>
+      </footer>
+    </div>
+  );
+};
 
-    const row = document.createElement('div');
-    row.classList.add('row');
-    container.appendChild(row);
+// Category Card Component
+const CategoryCard = ({ link, title, image }) => {
+  return (
+    <div className="col-xs-10 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+      <Link className="cat-home" to={link}>
+        <div className="card mx-auto text-center">
+          <img src={image} alt={title} className="card-img-top" />
+          <div className="card-body pb-0">
+            <h4 className="card-title">{title}</h4>
+          </div>
+        </div>
+      </Link>
+    </div>
+  );
+};
 
-    const sidebar = document.createElement('div');
-    sidebar.classList.add('col-12', 'col-sm-3', 'col-md-3', 'col-lg-3', 'pt-2', 'p-0');
-    row.appendChild(sidebar);
-
-    const verticalNav = document.createElement('ul');
-    verticalNav.classList.add('vertical-nav', 'navbar-nav');
-    sidebar.appendChild(verticalNav);
-
-    const categoryHeader = document.createElement('h2');
-    categoryHeader.classList.add('vertical-nav-element');
-    categoryHeader.style.backgroundColor = '#D8D2CB';
-    const small = document.createElement('small');
-    small.textContent = 'Kategóriák:';
-    categoryHeader.appendChild(small);
-    verticalNav.appendChild(categoryHeader);
-
-    const categories = [
-        { name: 'Hegyi', link: 'categories/mountain.html' },
-        { name: 'Gravel', link: 'categories/gravel.html' },
-        { name: 'Út', link: 'categories/road.html' },
-        { name: 'Városi', link: 'categories/city.html' },
-        { name: 'Elektromos', link: 'categories/electric.html' }
-    ];
-
-    categories.forEach(category => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = category.link;
-        a.textContent = category.name;
-        li.appendChild(a);
-        verticalNav.appendChild(li);
-    });
-
-    const content = document.createElement('div');
-    content.classList.add('col-12', 'col-sm-9', 'col-md-9', 'col-lg-9', 'pt-2', 'pt-4');
-    row.appendChild(content);
-
-    const bikeCategories = [
-        {
-            title: 'Hegyi Kerékpárok',
-            description: 'A hegyi kerékpárok tökéletesek azok számára, akik kényelmes közlekedést...',
-            items: [
-                { name: 'Marin Bolinas Ridge 1', imgSrc: 'assets/images/Marin Bolinas Ridge 1 Blue.jpg', link: 'single-item.html', id: 1 },
-                { name: 'Marin Bolinas Ridge 2', imgSrc: 'assets/images/Marin Bolinas Ridge 2 Black.jpg', link: 'single-item.html', id: 2 }
-            ]
-        },
-        {
-            title: 'Gravel Kerékpárok',
-            description: 'Könnyű, gyors és agilis, teljesítményorientált kerékpárjaink...',
-            items: [
-                { name: 'Marin Gestalt', imgSrc: 'assets/images/Marin Gestalt Blue.jpg', link: 'single-item.html', id: 3 }
-            ]
-        },
-        {
-            title: 'Út Kerékpárok',
-            description: 'Az úti kerékpárok tökéletesek azoknak, akik egyszerűen csak pedálozni szeretnének...',
-            items: [
-                { name: 'Polygon Strattos S5 - Shimano 105', imgSrc: 'assets/images/Polygon Strattos S5 - Shimano 105.jpg', link: 'single-item.html', id: 4 }
-            ]
-        },
-        {
-            title: 'Városi Kerékpárok',
-            description: 'Ha a tengerpart mentén szeretnél tekerni, vagy egyszerűen csak kényelmesen eljutni...',
-            items: [
-                { name: 'Marin Kentfield CS2 ST', imgSrc: 'assets/images/Marin Kentfield CS2 ST Grey.jpg', link: 'single-item.html', id: 5 },
-                { name: 'Polygon Sierra Deluxe Sport', imgSrc: 'assets/images/Polygon Sierra Deluxe Sport.jpg', link: 'single-item.html', id: 6 }
-            ]
-        },
-        {
-            title: 'Elektromos Kerékpárok',
-            description: 'A Polygon Mt Bromo N7 erőssége és tartóssága nem csorbult...',
-            items: [
-                { name: 'Polygon Mt Bromo N7', imgSrc: 'assets/images/Polygon Mt Bromo N7.jpg', link: 'single-item.html', id: 7 },
-                { name: 'Polygon Mt Bromo N8', imgSrc: 'assets/images/Polygon Mt Bromo N8.jpg', link: 'single-item.html', id: 8 }
-            ]
-        }
-    ];
-
-    bikeCategories.forEach(category => {
-        const categoryDiv = document.createElement('div');
-        content.appendChild(categoryDiv);
-
-        const categoryTitle = document.createElement('h3');
-        categoryTitle.textContent = category.title;
-        categoryDiv.appendChild(categoryTitle);
-
-        const hr = document.createElement('hr');
-        categoryDiv.appendChild(hr);
-
-        const description = document.createElement('p');
-        description.textContent = category.description;
-        categoryDiv.appendChild(description);
-
-        const itemContainer = document.createElement('div');
-        itemContainer.classList.add('container', 'mb-3');
-        categoryDiv.appendChild(itemContainer);
-
-        const itemRow = document.createElement('div');
-        itemRow.classList.add('row');
-        itemContainer.appendChild(itemRow);
-
-        category.items.forEach(item => {
-            const col = document.createElement('div');
-            col.classList.add('col-12', 'col-lg-4', 'col-md-5', 'col-sm-12', 'col-xl-3', 'mb-2');
-            itemRow.appendChild(col);
-
-            const card = document.createElement('div');
-            card.classList.add('galery-card');
-            col.appendChild(card);
-
-            const img = document.createElement('img');
-            img.src = item.imgSrc;
-            img.alt = item.name;
-            img.classList.add('galery-card-photo');
-            card.appendChild(img);
-
-            const itemName = document.createElement('h5');
-            itemName.textContent = item.name;
-            card.appendChild(itemName);
-
-            const button = document.createElement('a');
-            button.classList.add('btn', 'btn-secondary', 'btn-block');
-            button.href = item.link;
-            button.setAttribute('onclick', `setIdOfItemToShow(${item.id})`);
-            button.textContent = 'Tovább';
-            card.appendChild(button);
-        });
-    });
-
-    // Footer
-    const footer = document.createElement('footer');
-    footer.classList.add('page-footer', 'font-small');
-    document.body.appendChild(footer);
-
-    const copyright = document.createElement('div');
-    copyright.classList.add('footer-copyright', 'text-center', 'py-3');
-    copyright.textContent = '© 2025 Copyright';
-    footer.appendChild(copyright);
-});
+export default HomePage;
