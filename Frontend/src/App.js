@@ -15,6 +15,11 @@ import Categories from "./components/Categories";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import City from "./components/city";
+import Electric from "./components/electric";
+import Mountain from "./components/mountain";
+import Road from "./components/road";
+import Gravel from "./components/gravel";
 
 
 function App() {
@@ -36,6 +41,11 @@ function App() {
         <Route path="/footer" element={<Footer />} />
         <Route path="/header" element={<Header />} />
         <Route path="/hero-section" element={<HeroSection />} />
+        <Route path="/city" element={<City />} />
+        <Route path="/electric" element={<Electric />} />
+        <Route path="/mountain" element={<Mountain />} />
+        <Route path="/road" element={<Road />} />
+        <Route path="/gravel" element={<Gravel />} />
       </Routes>
     </Router>
   );
