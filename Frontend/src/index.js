@@ -25,7 +25,7 @@ function AuthPage() {
     const storedPassword = localStorage.getItem(username);
     if (storedPassword === password) {
       alert('Sikeres bejelentkezés!');
-      navigate("/home"); // 🚀 Átirányítás a Home oldalra
+      navigate("/home"); //  Átirányítás a Home oldalra
     } else {
       alert('Érvénytelen felhasználónév vagy jelszó!');
     }
