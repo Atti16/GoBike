@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   useEffect(() => {
-    // Here you can include any JS you want to run on page load, like setting the date & time or changing login text
+    
     displayDateAndTime();
     changeLoginText();
   }, []);
@@ -15,7 +15,7 @@ const HomePage = () => {
   };
 
   const changeLoginText = () => {
-    // Logic to change the login text if the user is logged in (you may need to manage authentication state here)
+    
   };
 
   return (

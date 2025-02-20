@@ -1,42 +1,41 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import index from './index';
-import home from './components/home';
-import contact from './components/contact';
-import category from './components/category';
-import shop from './components/shop';
-import ShoppingCart from './components/shopping-cart';
-import SingleItem from './components/single-item';
-import contactForm from './components/contactForm';
-import Delivery from './components/Delivery';
-import Newsletter from './components/Newsletter';
-import Categories from './components/Categories';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import ContactPage from './ContactPage';
-import Newsletter from './components/Newsletter';
-import Categories from './components/Categories';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/home";
+import Contact from "./components/contact";
+import Category from "./components/category";
+import Shop from "./components/shop";
+import ShoppingCart from "./components/shopping-cart";
+import SingleItem from "./components/single-item";
+import ContactForm from "./components/contactForm";
+import Delivery from "./components/Delivery";
+import Newsletter from "./components/Newsletter";
+import Categories from "./components/Categories";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="./home" component={HomePage} />
-        <Route path="./index" component={IndexPage} />
-        <Route path="./contact" component={ContactPage} />
-        <Route path="./category" component={CategoryPage} />
-        <Route path="./shop" component={ShopPage} />
-        <Route path="./shopping-cart" component={ShoppingCart} />
-        <Route path="./single-item" component={SingleItem} />
-        <Route path="./contactForm" component={ContactFormPage}/>
-        <Route path="./Delivery" component={DeliveryPage}/>
-        <Route path="./Newsletter" component={NewsletterPage}/>
-        <Route path="./Categories" component={CategoriesPage}/>
-        <Route path="./Footer" component={FooterPage}/>
-        <Route path="./Header" component={HeaderPage}/>
-        <Route path="./HeroSection" component={HeroSectionPage}/>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/shopping-cart" element={<ShoppingCart />} />
+        <Route path="/single-item" element={<SingleItem />} />
+        <Route path="/contact-form" element={<ContactForm />} />
+        <Route path="/delivery" element={<Delivery />} />
+        <Route path="/newsletter" element={<Newsletter />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/footer" element={<Footer />} />
+        <Route path="/header" element={<Header />} />
+        <Route path="/hero-section" element={<HeroSection />} />
+      </Routes>
     </Router>
   );
 }
