@@ -12,19 +12,18 @@ import ContactForm from "./components/contactForm";
 import Delivery from "./components/Delivery";
 import Newsletter from "./components/Newsletter";
 import Categories from "./components/Categories";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
 import City from "./components/city";
 import Electric from "./components/electric";
 import Mountain from "./components/mountain";
 import Road from "./components/road";
 import Gravel from "./components/gravel";
-
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <Router>
+      <Header />  {/* A Header globálisan itt lesz megjelenítve */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -38,15 +37,13 @@ function App() {
         <Route path="/delivery" element={<Delivery />} />
         <Route path="/newsletter" element={<Newsletter />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/footer" element={<Footer />} />
-        <Route path="/header" element={<Header />} />
-        <Route path="/hero-section" element={<HeroSection />} />
         <Route path="/city" element={<City />} />
         <Route path="/electric" element={<Electric />} />
         <Route path="/mountain" element={<Mountain />} />
         <Route path="/road" element={<Road />} />
         <Route path="/gravel" element={<Gravel />} />
       </Routes>
+      <Footer />  {/* A Footer globálisan itt lesz megjelenítve */}
     </Router>
   );
 }
