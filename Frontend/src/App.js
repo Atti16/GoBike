@@ -5,8 +5,8 @@ import home from './components/home';
 import contact from './components/contact';
 import category from './components/category';
 import shop from './components/shop';
-import shopping-cart from './components/shopping-cart';
-import single-item from './components/single-item';
+import ShoppingCart from './components/shopping-cart';
+import SingleItem from './components/single-item';
 import contactForm from './components/contactForm';
 import Delivery from './components/Delivery';
 import Newsletter from './components/Newsletter';
@@ -27,8 +27,8 @@ function App() {
         <Route path="./contact" component={ContactPage} />
         <Route path="./category" component={CategoryPage} />
         <Route path="./shop" component={ShopPage} />
-        <Route path="./shopping-cart" component={ShoppingCartPage} />
-        <Route path="./single-item" component={Single-ItemPage} />
+        <Route path="./shopping-cart" component={ShoppingCart} />
+        <Route path="./single-item" component={SingleItem} />
         <Route path="./contactForm" component={ContactFormPage}/>
         <Route path="./Delivery" component={DeliveryPage}/>
         <Route path="./Newsletter" component={NewsletterPage}/>
