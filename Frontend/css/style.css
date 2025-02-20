@@ -35,7 +35,7 @@ nav .navbar-nav li a:hover{
 }
 /* home photo */
 .home-photo {
-    background-image: url('../assets/images/home-wallpaper.jpg');
+    background-image: url('images/home-wallpaper.jpg');
     height: 100%; 
     background-attachment: fixed;
     background-position: center;
@@ -69,7 +69,7 @@ nav .navbar-nav li a:hover{
 }
 /* Categories Home */
 .categories {
-    min-height: 250px;
+    min-height: 350px;
 }
 .column {
     float: left;
