@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
 import Home from "./components/home";
 import Contact from "./components/contact";
 import Category from "./components/category";
@@ -13,8 +15,7 @@ import Categories from "./components/Categories";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import Login from "./components/Login";
-import Register from "./components/Register";
+
 
 function App() {
   return (
