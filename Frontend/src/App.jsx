@@ -1,8 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+// Pages and components
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Home from "./components/home";
 import Contact from "./components/contact";
 import Category from "./components/category";
 import Shop from "./components/shop";
@@ -19,15 +23,16 @@ import Road from "./components/road";
 import Gravel from "./components/gravel";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HomePage from "./components/category";
 
 function App() {
   return (
-    <Router>
-      <Header />  {/* A Header globálisan itt lesz megjelenítve */}
+    <>
+      <Header />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/category" element={<Category />} />
         <Route path="/shop" element={<Shop />} />
@@ -43,8 +48,8 @@ function App() {
         <Route path="/road" element={<Road />} />
         <Route path="/gravel" element={<Gravel />} />
       </Routes>
-      <Footer />  {/* A Footer globálisan itt lesz megjelenítve */}
-    </Router>
+      <Footer /> {/* A Footer globálisan itt lesz megjelenítve */}
+    </>
   );
 }
 

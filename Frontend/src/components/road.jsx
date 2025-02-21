@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css'; // Külső CSS fájl beillesztése
 
 const RoadBikesPage = () => {
   useEffect(() => {

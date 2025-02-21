@@ -6,8 +6,7 @@ function Login() {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        // Ide jönne az autentikációs logika (API hívás stb.)
-        navigate("/home"); // Sikeres bejelentkezés után átirányítunk a főoldalra
+        navigate("/home");
     };
 
     return (
