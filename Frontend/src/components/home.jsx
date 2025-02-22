@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const HomePage = () => {
   useEffect(() => {
@@ -22,7 +24,7 @@ const HomePage = () => {
       {/* Header (Menu) */}
       <header>
         <nav className="navbar navbar-expand-md navbar-light fixed-top topnav">
-          <link className="navbar-brand" to="/home">Go-Bicikli</Link>
+          <Link className="navbar-brand" to="/home">Go-Bicikli</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
           </button>
