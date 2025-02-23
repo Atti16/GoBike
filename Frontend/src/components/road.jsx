@@ -7,13 +7,11 @@ const RoadBikesPage = () => {
   }, []);
 
   const changeLoginText = () => {
-    // Felhasználói bejelentkezés szövegének módosítása (ha szükséges)
-    // Itt írd meg a bejelentkezés logikáját
+    
   };
 
   const setIdOfItemToShow = (id) => {
-    // Item azonosító beállítása (további információ gomb kezeléséhez)
-    // Itt írd meg a megfelelő logikát
+    
   };
 
   return (

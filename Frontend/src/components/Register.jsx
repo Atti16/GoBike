@@ -6,7 +6,7 @@ function Register() {
 
     const handleRegister = (event) => {
         event.preventDefault();
-        // Itt lenne a regisztrációs logika (API hívás stb.)
+        
         navigate("/home"); // Sikeres regisztráció után átirányítás a főoldalra
     };
 

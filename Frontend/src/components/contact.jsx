@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 const Contact = () => {
   useEffect(() => {
-    changeLoginText(); // Assuming this function is defined elsewhere
+    changeLoginText(); 
   }, []);
 
   return (

@@ -5,14 +5,14 @@ const ShoppingCart = () => {
   const [cart, setCart] = useState([]);
   
   useEffect(() => {
-    // Fetch cart from localStorage when component loads
+   
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCart(savedCart);
   }, []);
 
   const clearBasket = () => {
     localStorage.removeItem('cart');
-    setCart([]); // Update state to reflect cleared cart
+    setCart([]); 
     alert('A kosár kiürítve!');
   };
 

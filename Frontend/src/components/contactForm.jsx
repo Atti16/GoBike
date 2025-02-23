@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 const About = () => {
   useEffect(() => {
-    changeLoginText(); // Assuming this function is defined elsewhere
+    changeLoginText();
   }, []);
 
   const handleSubmit = (e) => {

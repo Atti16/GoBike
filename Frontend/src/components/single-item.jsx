@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const ProductPage = () => {
-  // Set up state for product data and user selections
+  
   const [product, setProduct] = useState({
     name: '',
     description: '',
@@ -15,16 +15,15 @@ const ProductPage = () => {
   const [color, setColor] = useState('Blue');
   const [quantity, setQuantity] = useState(1);
 
-  // Fetch product data when the component mounts (could be dynamic from an API)
+  
   useEffect(() => {
-    // For now, we are using static data to simulate a product.
-    // You could replace this with an API call or dynamic data from a database.
+    
     setProduct({
       name: 'Marin Bolinas Ridge 2',
       description: 'A great mountain bike with excellent features.',
       price: 700,
       rate: 4,
-      photos: ['assets/images/Marin Bolinas Ridge 2 Black.jpg'], // Just an example photo
+      photos: ['assets/images/Marin Bolinas Ridge 2 Black.jpg'], 
     });
   }, []);
 
@@ -37,11 +36,11 @@ const ProductPage = () => {
       quantity,
     };
 
-    // Retrieve existing cart from localStorage
+   
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push(item);
 
-    // Save the updated cart back to localStorage
+    
     localStorage.setItem('cart', JSON.stringify(cart));
 
     alert('Termék hozzáadva a kosárhoz!');
