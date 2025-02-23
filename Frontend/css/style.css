@@ -143,7 +143,7 @@ tr:nth-child(even) {
     background-color: #D8D2CB;
 }
 /* Form */
-/*form {
+form {
     width: 50%;
     margin: auto;
 }
@@ -187,7 +187,7 @@ input[type=submit] {
 input[type=submit]:hover {
     color: #1C658C;
     background-color: #D8D2CB;
-}*/
+}
 .icon {
     height: 15px;
 }
